@@ -53,4 +53,15 @@ kubectl get svc -n django
 ```
 kubectl port-forward service/django-service 80:80 -n django --address=0.0.0.0 
 ```
-### visit localhost:80 to see the deployment 
+
+### using ingress controller
+```
+kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+```
+```
+kubectl apply -f ingress.yml
+```
+```
+sudo -E kubectl port-forward service/ingress-nginx-controller 80:80 -n ingress-nginx --address=0.0.0.0 
+```
+### visit localhost:80 to see the deployment and /nginx to see nginx running 
